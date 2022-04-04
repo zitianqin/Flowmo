@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=M+PLUS+Rounded+1c:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=M+PLUS+Rounded+1c:wght@700;800&family=Varela+Round&display=swap');
+
+* { font-family: 'Varela Round', 'M PLUS Rounded 1c', Cabin, sans-serif; box-sizing: border-box; color: white;}
+
+body {
+	background-color: black;
+}
+
+button {
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: rgba(255,255,255, 0.15)}
+
+nav {
+	position: absolute;
+	width: 99%
+}
+
+nav > ul {
+	list-style: none;
+	padding: 0;
+	display: inline-block;
+	float: right;
+	margin: 5px 0;
+}
+
+#title {
+	display: inline-block;
+	margin: 8px 10px;
+	font-size: 30px;
+}
+
+nav > ul > li {
+	display: inline-block;
+	margin: 0 5px;
+}
+
+nav > ul > li > button {
+	height: 40px;
+	font-size: 16px;
+	border-radius: 6px;
+	border: 1px solid gray;
+	background-color: black;
+	padding: 0px 10px;
+	color: white;
+}
+
+#switch_to_pomodoro {}
+
+#timer_container_container {
+	text-align: center;
+	height: 100vh;
+	padding: 26vh 0 0vh 0;
+}
+
+#status_span {
+	margin: 30px;
+	color: rgb(230,230,230);
+	font-size: 18px;
+}
+
+#timer_container {
+	text-align: center;
+}
+
+#timer {
+	font-size: 150px;
+	vertical-align: center;
+	display: inline-block;
+	border-radius: 50px;
+	background-color: rgba(255,255,255, 0.12);
+	padding: 20px 50px;
+	border: 3px solid gray;
+	font-weight: bold;
+}
+
+#play_stop_btn {
+	hortizontal-align: center;
+	background-color: black;
+	border-radius: 15px;
+	border: 1px solid gray;
+	display: inline-block;
+	margin-top: 50px;
+	height: 50px;
+	width: 170px;
+}
+
+#play_stop_btn:hover {
+	background-color: rgba(255,255,255, 0.15)
+}
+
+#play_or_pause_span {
+	font-size: 25px;
+}
+
+h1 { font-size: 30px; }
+
+#timer_description {
+	text-align: center;
+	background-color: rgba(255,255,255, 0.12);
+	width: 60%;
+	border-radius: 30px;
+	margin: auto;
+	padding: 10px 50px;
+}
+
+#timer_description > p {
+	line-height: 200%;
+	font-size: 110%;
+}
+
+#timer_description > ol {
+	list-style-position: inside;
+}
+
+footer {
+	margin-top: 30px;
+	text-align: center;
+	font-size: 80%;
+	margin-bottom: 20px;
+}
