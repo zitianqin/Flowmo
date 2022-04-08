@@ -16,7 +16,7 @@ function timeToString(time) {
 
 let startTime;
 let elapsedTime;
-let focusTime = 1500;
+let focusTime = 1500000;
 
 function start() {
 	startTime = Date.now() + focusTime;
