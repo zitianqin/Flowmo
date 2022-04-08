@@ -16,14 +16,17 @@ function timeToString(time) {
 
 let startTime;
 let elapsedTime;
-let focusTime;
+let focusTime = 1500;
 
 function start() {
-	startTime = Date.now();
+	startTime = Date.now() + focusTime;
 	myInterval = setInterval(function printTime() {
-	elapsedTime = Date.now() - startTime;
+	elapsedTime = startTime - Date.now();
+	if (elapsedTime <= 0) {;
+		stop();
+		document.getElementById("timer").innerHTML = "05:00";
+	}
 	document.getElementById("timer").innerHTML = timeToString(elapsedTime);
-	focusTime = elapsedTime / 5;
 	}, 25);
 	
 	play_or_pause_span.textContent = 'Stop';
@@ -32,16 +35,17 @@ function start() {
 
 function stop() {
 	clearInterval(myInterval);
-	document.getElementById("timer").innerHTML = "00:00";
 	elapsedTime = 0;
+	document.getElementById("timer").innerHTML = "05:00";
 	
 	play_or_pause_span.textContent = 'Start Break';
 	status_span.textContent = "Let's take a break!";
+	last_cmd = 2;
 }
 
 function startRest() {
-	// Countdown Timer of 1/5th of study time.
-	startTime = Date.now() + focusTime;
+	// Countdown Timer of 5 minutes.
+	startTime = Date.now() + 300000;
 	myInterval = setInterval(function printTime() {
 	elapsedTime = startTime - Date.now();
 	if (elapsedTime <= 0) {
@@ -54,7 +58,7 @@ function startRest() {
 
 function stopRest() {
 	clearInterval(myInterval);
-	document.getElementById("timer").innerHTML = "00:00";
+	document.getElementById("timer").innerHTML = "25:00";
 	elapsedTime = 0;
 	
 	play_or_pause_span.textContent = 'Start';
@@ -67,9 +71,9 @@ function startStopToggle() {
 		start();
 		last_cmd = 1; 
 	} else if (last_cmd == 1) {
-		stop();
+		stopRest();
 		document.getElementById("timer").innerHTML = timeToString(focusTime);
-		last_cmd = 2;
+		last_cmd = 0;
 	} else if (last_cmd == 2) {
 		startRest();
 		last_cmd = 3;

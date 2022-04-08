@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pomodoro Timer | Flowmo</title>
+    <link rel="stylesheet" href="styling/main.css">
+  </head>
+  
+  <body>
+	<nav>
+		<h1 id="title">Flowmo Pomodoro Timer</h1>
+		<ul>
+			<li><button id="switch_to_pomodoro" onclick="location.href = 'index.html';">Switch to Flowtime</button></li>
+		</ul>
+		
+		<hr style="margin:0;padding:0;background-color:black;">
+	</nav>
+	
+	<div id="timer_container_container">
+		<aside id="status_span">Time to focus!</aside>
+		<div id="timer_container">
+			<div id="timer">25:00</div>
+		</div>
+		<button id="play_stop_btn"><span id="play_or_pause_span">Start</span></button>
+	</div>
+		
+	<article id="timer_description">
+		<h1>An Online Pomodoro Timer — Right in Your Browser</h1>
+		<br>
+		<h2>What is Pomodoro?</h2>
+		<p>Pomodoro is a time management technique where you work on a task for 25 minutes then take a 5-minute break afterwards. You then work for another 25 minutes, take another 5-minute break, and repeat this cycle.</p>
+		<br>
+		<h2>About this Timer</h2>
+		<p>This timer was created as a personal project to help boost my productivity. If you found this timer helpful, I'd highly appreciate your support. You're welcome to <a href="#">donate here</a> or <a href="#">share</a> this site.</p>
+	</article>
+	
+	<footer>
+		©Flowmo 2022. All Rights Reserved.
+	</footer>
+	
+	<script src="scripts/pomodoro.js"></script>
+  </body>
+</html>
