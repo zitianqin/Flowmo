@@ -1,48 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-AU">
   <head>
     <title>Flowmo</title>
-    <link rel="stylesheet" href="styling/main.css">
-	  
-    <meta name = "keywords" content = "Flowmo, Flowtime, Flowmodoro, Timer, Study" />
-    <meta name = "description" content = "Online flowtime timer." />
-    <meta name = "creator" content = "Zitian Qin" />
+    <meta charset="UTF-8">
+    <meta name = "keywords" content = "Flowmo, Flowtime, Flowmodoro, Timer, Study">
+    <meta name = "description" content = "Online flowtime timer.">
+    <meta name = "creator" content = "Zitian Qin">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
-  
+
   <body>
-	<nav>
-		<h1 id="title">Flowmo</h1>
-		<ul>
-			<li><button id="switch_to_pomodoro" onclick="location.href = 'pomodoro.html';">Switch to Pomodoro</button></li>
-		</ul>
-		
-		<hr style="margin:0;padding:0;background-color:black;">
-	</nav>
-	
-	<div id="timer_container_container">
-		<aside id="status_span">Time to focus!</aside>
-		<div id="timer_container">
-			<div id="timer">00:00</div>
-		</div>
-		<button id="play_stop_btn"><span id="play_or_pause_span">Start</span></button>
-	</div>
-		
-	<article id="timer_description">
-		<h1>An Online Flowtime Timer — Right in Your Browser</h1>
-		<br>
-		<h2>What is Flowtime?</h2>
-		<p>Flowtime is a time management technique where a stopwatch is used to track the amount of time spent working. You work on a task for as long as you need to, stopping the timer and taking a break as soon as you feel as if you start to lose concentration or feel fatigued.</p>
-		<p>Break times generally last one-fifth of your working time. For example, if you work for 50 minutes, you should take a 10 minute break.</p>
-		<br>
-		<h2>Why not Pomodoro?</h2>
-		<p>One of the disadvantages of the pomodoro technique is that the timer consistently interrupts you, preventing you from fully immersing yourself into a task.</p>
-		<p>Flowtime, on the other hand, does not interrupt you during a focus session, allowing you to fully concentrate on the task at hand.</p>
-	</article>
-	
-	<footer>
-		©Flowmo 2022. All Rights Reserved.
-	</footer>
-	
-	<script src="scripts/main.js"></script>
+    <nav>
+      <h1 id="title">Flowmo</h1>
+      <ul>
+        <li><button id="switch-timer-mode" onclick="location.href = 'pomodoro.html';">Switch to Pomodoro</button></li>
+      </ul>
+    </nav>
+
+    <div id="timer-container">
+      <aside id="status-span">Time to focus!</aside>
+      <div id="timer">00:00</div>
+
+      <div>
+        <button id="play-stop-btn" onclick=startStopToggle()><span id="play-pause-text">Start</span></button>
+      </div>
+    </div>
+      
+    <article id="timer-description">
+      <header>
+        <h1>An Online Flowtime Timer — Right in Your Browser</h1>
+      </header>
+      <br>
+      <h2>What is Flowtime?</h2>
+      <p>Flowtime is a time management technique where a stopwatch is used to track the amount of time spent working. You work on a task for as long as you need to, stopping the timer and taking a break as soon as you feel as if you start to lose concentration or feel fatigued.</p>
+      <p>Break times generally last one-fifth of your working time. For example, if you work for 50 minutes, you should take a 10 minute break.</p>
+      <br>
+      <h2>Why not Pomodoro?</h2>
+      <p>One of the disadvantages of the pomodoro technique is that the timer consistently interrupts you, preventing you from fully immersing yourself into a task.</p>
+      <p>Flowtime, on the other hand, does not interrupt you during a focus session, allowing you to fully concentrate on the task at hand.</p>
+    </article>
+
+    <footer>
+      © Flowmo 2022-2024. All Rights Reserved.
+    </footer>
+
+    <script src="assets/js/main.js"></script>
   </body>
 </html>

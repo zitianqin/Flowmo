@@ -1,0 +1,151 @@
+/* Import font files */
+@font-face {
+  font-family: 'Cabin';
+  src: url('../fonts/Cabin/static/Cabin-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Varela Round';
+  src: url('../fonts/Varela_Round/VarelaRound-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Use the font families */
+* {
+  font-family: 'Varela Round', Cabin, sans-serif;
+  box-sizing: border-box;
+  color: white;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgba(255,255,255, 0.15)
+}
+
+/* Change the link color on hover */
+ul li a:hover {
+  background-color: #111;
+}
+
+/* This will make the navbar sticky */
+nav {
+  position: sticky;
+  top: 0;
+  padding: 0.33rem 0.33rem;
+  width: 100%;
+  background-color: black;
+  border-bottom: 1px solid gray;
+}
+
+nav > ul {
+  list-style: none;
+  padding: 0;
+  display: inline;
+  float: right;
+  margin: 5px 0;
+  overflow: hidden;
+}
+
+#title {
+  display: inline-block;
+  margin: 8px 10px;
+  font-size: 30px;
+}
+
+nav > ul > li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+nav > ul > li > button {
+  height: 40px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid gray;
+  background-color: black;
+  padding: 0px 10px;
+  color: white;
+}
+
+#timer-container {
+  text-align: center;
+  height: 100vh;
+  padding: 26vh 0 0vh 0;
+}
+
+#status-span {
+  margin: 30px;
+  color: rgb(230,230,230);
+  font-size: 18px;
+}
+
+#timer {
+  text-align: center;
+  font-size: 150px;
+  vertical-align: center;
+  display: inline-block;
+  border-radius: 50px;
+  background-color: rgba(255,255,255, 0.12);
+  padding: 20px 50px;
+  border: 3px solid gray;
+  font-weight: bold;
+}
+
+#play-stop-btn {
+  background-color: black;
+  border-radius: 15px;
+  border: 1px solid gray;
+  display: inline-block;
+  margin-top: 50px;
+  height: 50px;
+  width: 170px;
+}
+
+#play-stop-btn:hover {
+  background-color: rgba(255,255,255, 0.15)
+}
+
+#play-pause-text {
+  font-size: 25px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+#timer-description {
+  text-align: center;
+  background-color: rgba(255,255,255, 0.12);
+  width: 60%;
+  border-radius: 30px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 10px 50px;
+}
+
+#timer-description > p {
+  line-height: 200%;
+  font-size: 110%;
+}
+
+#timer-description > ol {
+  list-style-position: inside;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
