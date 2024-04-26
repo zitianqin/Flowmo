@@ -27,11 +27,11 @@ body {
 
 /* Element Selectors */
 h1 {
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 h2 {
-  margin-top: 2em;
+  margin-top: 2.5rem;
 }
 
 button {
@@ -39,29 +39,31 @@ button {
 }
 
 /* Class and ID Selectors */
+.center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 86vh
+}
+
 #title {
   display: inline-block;
   margin: 8px 10px;
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 #timer-container {
   text-align: center;
-  height: 100vh;
-  padding: 26vh 0 0vh 0;
 }
 
 #status-span {
   margin: 30px;
   color: rgb(230,230,230);
-  font-size: 18px;
+  font-size: 1.3rem;
 }
 
 #timer {
-  text-align: center;
-  font-size: 150px;
-  vertical-align: center;
-  display: inline-block;
+  font-size: 8rem;
   border-radius: 50px;
   background-color: rgba(255,255,255, 0.12);
   padding: 20px 50px;
@@ -84,22 +86,22 @@ button {
 }
 
 #play-pause-text {
-  font-size: 25px;
+  font-size: 1.3rem;
 }
 
 #timer-description {
   text-align: center;
   background-color: rgba(255,255,255, 0.12);
-  width: 60%;
   border-radius: 30px;
-  margin: auto;
-  margin-top: 50px;
-  padding: 10px 50px;
+  margin-top: 7vh;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: 10px 3%;
 }
 
 #timer-description > p {
-  line-height: 200%;
-  font-size: 110%;
+  line-height: 1.5rem;
+  font-size: 1rem;
 }
 
 #timer-description > ol {
@@ -112,11 +114,18 @@ button:hover {
 }
 
 /* Specific Components or Sections */
-nav {
+header {
   position: sticky;
   top: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0.33rem 0.33rem;
   width: 100%;
+  height: 7vh;
   background-color: black;
   border-bottom: 1px solid gray;
 }
@@ -137,7 +146,7 @@ nav > ul > li {
 
 nav > ul > li > button {
   height: 40px;
-  font-size: 16px;
+  font-size: 1.1rem;
   border-radius: 6px;
   border: 1px solid gray;
   background-color: black;
@@ -149,5 +158,5 @@ footer {
   margin-top: 30px;
   text-align: center;
   margin-bottom: 20px;
-  font-size: 12px;
+  font-size: 0.7rem;
 }
