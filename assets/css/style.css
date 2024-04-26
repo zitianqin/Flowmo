@@ -27,11 +27,11 @@ body {
 
 /* Element Selectors */
 h1 {
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 h2 {
-  margin-top: 2em;
+  margin-top: 2.5rem;
 }
 
 button {
@@ -42,7 +42,7 @@ button {
 #title {
   display: inline-block;
   margin: 8px 10px;
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 #timer-container {
@@ -54,12 +54,12 @@ button {
 #status-span {
   margin: 30px;
   color: rgb(230,230,230);
-  font-size: 18px;
+  font-size: 1.3rem;
 }
 
 #timer {
   text-align: center;
-  font-size: 150px;
+  font-size: 8rem;
   vertical-align: center;
   display: inline-block;
   border-radius: 50px;
@@ -84,7 +84,7 @@ button {
 }
 
 #play-pause-text {
-  font-size: 25px;
+  font-size: 1.3rem;
 }
 
 #timer-description {
@@ -98,8 +98,8 @@ button {
 }
 
 #timer-description > p {
-  line-height: 200%;
-  font-size: 110%;
+  line-height: 1.5rem;
+  font-size: 1rem;
 }
 
 #timer-description > ol {
@@ -137,7 +137,7 @@ nav > ul > li {
 
 nav > ul > li > button {
   height: 40px;
-  font-size: 16px;
+  font-size: 1.1rem;
   border-radius: 6px;
   border: 1px solid gray;
   background-color: black;
@@ -149,5 +149,5 @@ footer {
   margin-top: 30px;
   text-align: center;
   margin-bottom: 20px;
-  font-size: 12px;
+  font-size: 0.7rem;
 }
