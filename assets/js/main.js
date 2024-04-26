@@ -53,13 +53,15 @@ function stop() {
 function startRest() {
   // Countdown Timer of 1/5th of study time.
   startTime = Date.now() + focusTime;
+  
   myInterval = setInterval(function printTime() {
     elapsedTime = startTime - Date.now();
     if (elapsedTime <= 0) {
       stopRest();
     }
     document.getElementById("timer").innerHTML = timeToString(elapsedTime);
-  }, 25);
+  }, 1000);
+
   playPauseText.textContent = 'End Break';
 }
 
