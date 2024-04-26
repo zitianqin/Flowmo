@@ -57,14 +57,14 @@ button {
 }
 
 #status-span {
-  margin: 30px;
+  margin-bottom: 15px;
   color: rgb(230,230,230);
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 #timer {
-  font-size: 8rem;
-  border-radius: 50px;
+  font-size: 5rem;
+  border-radius: 30px;
   background-color: rgba(255,255,255, 0.12);
   padding: 15px 35px;
   border: 2px solid gray;
@@ -76,7 +76,7 @@ button {
   border-radius: 15px;
   border: 1px solid gray;
   display: inline-block;
-  margin-top: 50px;
+  margin-top: 20px;
   height: 50px;
   width: 170px;
 }
@@ -86,7 +86,7 @@ button {
 }
 
 #play-pause-text {
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 #timer-description {
