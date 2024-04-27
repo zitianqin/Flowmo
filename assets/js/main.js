@@ -101,6 +101,13 @@ function startStopToggle() {
   }
 }
 
+function uid() {
+  const timestamp = Date.now();
+  const uniqueId = timestamp;
+
+  return uniqueId.toString();
+}
+
 window.onload = function() {
   const navbar = document.querySelector('.navbar');
 
@@ -125,5 +132,68 @@ window.onload = function() {
     }, 20000);
   });
 };
+
+document.getElementById('new-task-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const taskInput = document.getElementById('new-task-input');
+  const taskText = taskInput.value;
+
+  if (!taskText.trim()) {
+    alert('Task cannot be empty');
+    return;
+  }
+
+  const taskElement = document.createElement('li');
+
+  // Add a "Complete" button to each task
+  const completeButton = document.createElement('button');
+  completeButton.textContent = 'Complete';
+  completeButton.addEventListener('click', function() {
+    // Add the 'completed' class to the clicked task
+    taskElement.classList.add('completed');
+  });
+  taskElement.appendChild(completeButton);
+
+  // Create a div to hold the task text
+  const taskTextDiv = document.createElement('p');
+  taskTextDiv.style.display = 'inline-block';
+
+  // Append the task text as a separate text node
+  const taskTextNode = document.createTextNode(taskText);
+  taskTextDiv.appendChild(taskTextNode);
+
+  // Append the div to the task element
+  taskElement.appendChild(taskTextDiv);
+
+  // Add a "Select" button to each task
+  const selectButton = document.createElement('button');
+  selectButton.textContent = 'Select';
+  selectButton.addEventListener('click', function() {
+    // Remove the 'selected' class from all tasks
+    const tasks = document.querySelectorAll('#task-list li');
+    tasks.forEach(function(task) {
+      task.classList.remove('selected');
+    });
+
+    // Add the 'selected' class to the clicked task
+    taskElement.classList.add('selected');
+
+    // Store the selected task's ID or some other identifier
+    // For this example, we'll just store the task's text
+    localStorage.setItem('selectedTask', uid());
+  });
+  taskElement.appendChild(selectButton);
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.addEventListener('click', function() {
+    taskElement.remove();
+  });
+  taskElement.appendChild(deleteButton);
+
+  document.getElementById('task-list').appendChild(taskElement);
+    // Clear the input field
+    taskInput.value = '';
+});
 
 playStopBtn.onclick = startStopToggle;

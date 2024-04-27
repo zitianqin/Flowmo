@@ -70,6 +70,10 @@ body {
   display: inline-block;
 }
 
+.completed {
+  text-decoration: line-through;
+}
+
 #title {
   display: inline-block;
   margin: 8px 10px;
@@ -104,6 +108,38 @@ body {
   border-radius: 15px;
   height: 50px;
   width: 170px;
+}
+
+#sidebarLabel {
+  font-weight: bold;
+}
+
+#task-list {
+  margin-top: 20px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  background-color: black;
+  border-radius: 10px;
+  padding: 10px 10px;
+  margin: 5px 0;
+}
+
+#task-list li.selected {
+  background-color: gray;
+}
+
+#task-list li p {
+  margin-bottom: 0;
+  overflow-wrap: break-word;
+  width: 60%;
 }
 
 #timer-description {
