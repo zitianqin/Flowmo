@@ -1,3 +1,6 @@
+/* For form input and task list item text div, you will have to find a way to stop overflow without
+hard-coding width such as 80% or 50% etc. */
+
 /* Import font files */
 @font-face {
   font-family: 'Cabin';
@@ -65,9 +68,32 @@ body {
 }
 
 .transparent-btn {
-  background-color: transparent;
-  border: 1px solid rgb(157,157,157);
+  background-color: rgba(255,255,255, 0.15);
   display: inline-block;
+  border: 0;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.offcanvas {
+  background-color: rgb(20,20,20);
+}
+
+.round-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255,255,255, 0.07);
+  border-radius: 50%;
+  border: 0;
+  height: 2rem;
+  width: 2rem;
+}
+
+.round-btn:hover {
+  background-color: rgba(255,255,255, 0.15);
 }
 
 #title {
@@ -88,9 +114,8 @@ body {
 #timer {
   font-size: 8rem;
   border-radius: 60px;
-  background-color: rgba(255,255,255, 0.12);
+  background-color: rgba(255,255,255, 0.15);
   padding: 15px 60px;
-  border: 1px solid rgb(157,157,157);
   font-weight: bold;
 }
 
@@ -104,6 +129,47 @@ body {
   border-radius: 15px;
   height: 50px;
   width: 170px;
+}
+
+#sidebarLabel {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+#new-task-input {
+  width: 85%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255, 0.07);
+  border: 0;
+}
+
+#task-list {
+  margin-top: 20px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  background-color: rgba(255,255,255, 0.07);
+  border-radius: 10px;
+  padding: 10px 10px;
+  margin: 10px 0;
+}
+
+#task-list li.selected {
+  background-color: rgba(255,255,255, 0.15);
+}
+
+#task-list li p {
+  margin-bottom: 0;
+  overflow-wrap: break-word;
+  width: 50%;
 }
 
 #timer-description {
