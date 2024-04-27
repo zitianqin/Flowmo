@@ -54,6 +54,22 @@ body {
   opacity: 1;
 }
 
+.timer-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: 51px; /* For desktop screens */
+  /* margin-bottom: 45px; For mobile screens */
+}
+
+.transparent-btn {
+  background-color: transparent;
+  border: 1px solid rgb(157,157,157);
+  display: inline-block;
+}
+
 #title {
   display: inline-block;
   margin: 8px 10px;
@@ -79,19 +95,15 @@ body {
 }
 
 #play-stop-btn {
-  background-color: black;
   border-radius: 15px;
-  border: 1px solid rgb(157,157,157);
-  display: inline-block;
-  margin-top: 20px;
   height: 50px;
   width: 170px;
-  margin-bottom: 51px; /* For desktop screens */
-  /* margin-bottom: 45px; For mobile screens */
 }
 
-#play-stop-btn:hover {
-  background-color: rgba(255,255,255, 0.15)
+#task-list-btn {
+  border-radius: 15px;
+  height: 50px;
+  width: 170px;
 }
 
 #timer-description {

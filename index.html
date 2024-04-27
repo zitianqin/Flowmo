@@ -36,9 +36,20 @@
       <div id="timer-container">
         <aside id="status-span">Time to focus!</aside>
         <div id="timer">00:00</div>
-        <div>
-          <button id="play-stop-btn" onclick=startStopToggle()><span id="play-pause-text">Start</span></button>
+        <div class="timer-buttons-container">
+          <button class="transparent-btn" id="task-list-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">Task List</button>
+          <button class="transparent-btn" id="play-stop-btn" onclick=startStopToggle()><span id="play-pause-text">Start</span></button>
         </div>
+      </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+      <div class="offcanvas-header">
+        <h5 id="sidebarLabel">Tasks</h5>
+      </div>
+      <div class="offcanvas-body">
+        <!-- Sidebar content goes here -->
+        <ul id="task-list">
       </div>
     </div>
     
