@@ -149,10 +149,18 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
   const completeButton = document.createElement('button');
   completeButton.classList.add('btn'); // Add Bootstrap classes here
   completeButton.innerHTML = '<i class="bi bi-check-lg round-btn"></i>'; // Use Bootstrap icon
+
   completeButton.addEventListener('click', function() {
     // Toggle the 'completed' class on the clicked task
     taskElement.classList.toggle('completed');
+
+    // If the task is selected and completed, deselect it
+    if (taskElement.classList.contains('completed') && taskElement.classList.contains('selected')) {
+      taskElement.classList.remove('selected');
+      localStorage.removeItem('selectedTask');
+    }
   });
+
   taskElement.appendChild(completeButton);
 
   // Create a div to hold the task text
@@ -171,6 +179,11 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
   selectButton.classList.add('btn'); // Add Bootstrap classes here
   selectButton.innerHTML = '<i class="bi bi-hand-index-thumb round-btn"></i>'; // Use Bootstrap icon
   selectButton.addEventListener('click', function() {
+    // If the task is already completed, ignore it
+    if (taskElement.classList.contains('completed')) {
+      return;
+    }
+
     // If the task is already selected, deselect it
     if (taskElement.classList.contains('selected')) {
       taskElement.classList.remove('selected');

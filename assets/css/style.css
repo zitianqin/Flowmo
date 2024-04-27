@@ -39,6 +39,10 @@ body {
 
 .navbar-brand {
   font-weight: bold;
+  /* Default total padding on top and bottom is 1.06rem */
+  padding-top: 0.6rem;
+  padding-bottom: 0.46rem;
+  padding-left: 0.6rem;
 }
 
 .navbar {
@@ -74,6 +78,10 @@ body {
 }
 
 .completed {
+  opacity: 0.5;
+}
+
+.completed p {
   text-decoration: line-through;
 }
 
@@ -94,11 +102,6 @@ body {
 
 .round-btn:hover {
   background-color: rgba(255,255,255, 0.15);
-}
-
-#title {
-  display: inline-block;
-  margin: 8px 10px;
 }
 
 #timer-container {
@@ -132,7 +135,7 @@ body {
 }
 
 #sidebarLabel {
-  margin-top: 5px;
+  margin-bottom: 0;
   font-weight: bold;
 }
 
