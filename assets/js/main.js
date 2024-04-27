@@ -13,6 +13,7 @@ let startTime = 0;
 let elapsedTime = 0;
 let focusTime = 0;
 let lastCmd = Command.START;
+let timeoutId;
 
 function timeToString(time) {
   // Calculate hours, minutes, and seconds
@@ -99,8 +100,6 @@ function startStopToggle() {
       break;
   }
 }
-
-let timeoutId;
 
 window.onload = function() {
   const navbar = document.querySelector('.navbar');
