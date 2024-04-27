@@ -147,10 +147,11 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
 
   // Add a "Complete" button to each task
   const completeButton = document.createElement('button');
-  completeButton.textContent = 'Complete';
+  completeButton.classList.add('btn'); // Add Bootstrap classes here
+  completeButton.innerHTML = '<i class="bi bi-check-lg round-btn"></i>'; // Use Bootstrap icon
   completeButton.addEventListener('click', function() {
-    // Add the 'completed' class to the clicked task
-    taskElement.classList.add('completed');
+    // Toggle the 'completed' class on the clicked task
+    taskElement.classList.toggle('completed');
   });
   taskElement.appendChild(completeButton);
 
@@ -167,25 +168,29 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
 
   // Add a "Select" button to each task
   const selectButton = document.createElement('button');
-  selectButton.textContent = 'Select';
+  selectButton.classList.add('btn'); // Add Bootstrap classes here
+  selectButton.innerHTML = '<i class="bi bi-hand-index-thumb round-btn"></i>'; // Use Bootstrap icon
   selectButton.addEventListener('click', function() {
-    // Remove the 'selected' class from all tasks
-    const tasks = document.querySelectorAll('#task-list li');
-    tasks.forEach(function(task) {
-      task.classList.remove('selected');
-    });
+    // If the task is already selected, deselect it
+    if (taskElement.classList.contains('selected')) {
+      taskElement.classList.remove('selected');
+      localStorage.removeItem('selectedTask');
+    } else {
+      // Otherwise, deselect all tasks and select the clicked one
+      const tasks = document.querySelectorAll('#task-list li');
+      tasks.forEach(function(task) {
+        task.classList.remove('selected');
+      });
 
-    // Add the 'selected' class to the clicked task
-    taskElement.classList.add('selected');
-
-    // Store the selected task's ID or some other identifier
-    // For this example, we'll just store the task's text
-    localStorage.setItem('selectedTask', uid());
+      taskElement.classList.add('selected');
+      localStorage.setItem('selectedTask', uid());
+    }
   });
   taskElement.appendChild(selectButton);
 
   const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
+  deleteButton.classList.add('btn'); // Add Bootstrap classes here
+  deleteButton.innerHTML = '<i class="bi bi-trash round-btn"></i>'; // Use Bootstrap icon
   deleteButton.addEventListener('click', function() {
     taskElement.remove();
   });

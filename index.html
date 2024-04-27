@@ -9,6 +9,7 @@
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css">
   </head>
 
   <body class="bg-black">
@@ -38,15 +39,15 @@
       </div>
     </div>
 
-    <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
       <div class="offcanvas-header">
         <h5 id="sidebarLabel">Tasks</h5>
+        <button type="button" class="text-reset btn round-btn ms-auto bi bi-x-lg" data-bs-dismiss="offcanvas"></button>
       </div>
       <div class="offcanvas-body">
-        <!-- Sidebar content goes here -->
-        <form id="new-task-form">
+        <form id="new-task-form" class="d-flex align-items-center">
           <input type="text" id="new-task-input" placeholder="New task">
-          <button type="submit">Add task</button>
+          <button type="submit" class="round-btn bi bi-x-lg ms-auto"></button>
         </form>
         <ul id="task-list">
         </ul>
