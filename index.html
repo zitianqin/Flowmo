@@ -9,19 +9,30 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   </head>
 
-  <body>
-    <header>
-      <nav>
-        <h1 id="title">Flowmo</h1>
-        <ul>
-          <li><button id="switch-timer-mode" onclick="location.href = 'pomodoro.html';">Switch to Pomodoro</button></li>
-        </ul>
-      </header>
-    </nav>
+  <body class="bg-black">
+    <header class="bg-transparent">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Flowmo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="pomodoro.html">Switch to Pomodoro</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-    <div class="center-flex">
+    <div class="full-display-center bg-black">
       <div id="timer-container">
         <aside id="status-span">Time to focus!</aside>
         <div id="timer">00:00</div>
@@ -30,21 +41,23 @@
         </div>
       </div>
     </div>
-      
-    <article id="timer-description">
-      <h1>An Online Flowtime Timer — Right in Your Browser</h1>
-      <h2>What is Flowtime?</h2>
-      <p>Flowtime is a time management technique where a stopwatch is used to track the amount of time spent working. You work on a task for as long as you need to, stopping the timer and taking a break as soon as you start feeling fatigued or if you start to lose concentration.</p>
-      <p>Break times generally last one-fifth of your working time, but can be adjusted. For example, if you work for 50 minutes, you should take a 10 minute break.</p>
-      <h2>Why not Pomodoro?</h2>
-      <p>One of the disadvantages of the pomodoro technique is that the timer consistently interrupts you, preventing you from fully immersing yourself into a task.</p>
-      <p>Flowtime, on the other hand, does not interrupt you during a focus session, allowing you to fully concentrate on the task at hand.</p>
-      <h2>Why Flowmo?</h2>
-      <p>Flowmo has the bare essentials for a focus session, including a task list, rest timer, and binaural beats. By eliminating unnecessary features and focusing on core functionality, we remove all distractions, allowing you to concentrate solely on your tasks.</p>
-      <p>With Flowmo, you can achieve a state of flow, increase your productivity, and get more done in less time.</p>
-    </article>
+    
+    <div class="bg-dark">
+      <article id="timer-description">
+        <h1>A Minimalistic Flowtime Timer to Help You Focus</h1>
+        <h2>What is Flowtime?</h2>
+        <p>Flowtime is a time management technique where a stopwatch is used to track the amount of time spent working. You work on a task for as long as you need to, stopping the timer and taking a break as soon as you start feeling fatigued or if you start to lose concentration.</p>
+        <p>Break times generally last one-fifth of your working time, but can be adjusted. For example, if you work for 50 minutes, you should take a 10 minute break.</p>
+        <h2>Why not Pomodoro?</h2>
+        <p>One of the disadvantages of the pomodoro technique is that the timer consistently interrupts you, preventing you from fully immersing yourself into a task.</p>
+        <p>Flowtime, on the other hand, does not interrupt you during a focus session, allowing you to fully concentrate on the task at hand.</p>
+        <h2>Why Flowmo?</h2>
+        <p>Flowmo has the bare essentials for a focus session, including a task list, rest timer, and binaural beats. By eliminating unnecessary features and focusing on core functionality, we remove all distractions, allowing you to concentrate solely on your tasks.</p>
+        <p>With Flowmo, you can achieve a state of flow, increase your productivity, and get more done in less time.</p>
+      </article>
+    </div>
 
-    <footer>
+    <footer class="bg-dark">
       <p>© Flowmo 2024. All Rights Reserved.</p>
     </footer>
 
