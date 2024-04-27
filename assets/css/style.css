@@ -39,10 +39,6 @@ body {
 
 .navbar-brand {
   font-weight: bold;
-  /* Default total padding on top and bottom is 1.06rem */
-  padding-top: 0.6rem;
-  padding-bottom: 0.46rem;
-  padding-left: 0.6rem;
 }
 
 .navbar {
