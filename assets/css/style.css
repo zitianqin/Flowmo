@@ -25,83 +25,88 @@ body {
   margin: 0;
 }
 
-/* Element Selectors */
-h1 {
-  font-size: 2rem;
-}
-
-h2 {
-  margin-top: 2.5rem;
-}
-
-button {
-  cursor: pointer;
-}
-
 /* Class and ID Selectors */
-.center-flex {
+.full-display-center {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 86vh
+  height: calc(100vh - 56px); /* For desktop screens */
+  /* height: calc(100vh - 50px); For mobile screens */
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.navbar {
+  transition: opacity 2s;
+}
+
+.navbar:hover {
+  opacity: 1;
+}
+
+.navbar-hidden {
+  opacity: 0;
+}
+
+.navbar-show {
+  opacity: 1;
 }
 
 #title {
   display: inline-block;
   margin: 8px 10px;
-  font-size: 2rem;
 }
 
 #timer-container {
   text-align: center;
+  font-size: 1.5rem;
 }
 
 #status-span {
   margin-bottom: 15px;
   color: rgb(230,230,230);
-  font-size: 1rem;
 }
 
 #timer {
-  font-size: 5rem;
-  border-radius: 30px;
+  font-size: 8rem;
+  border-radius: 60px;
   background-color: rgba(255,255,255, 0.12);
-  padding: 15px 35px;
-  border: 2px solid gray;
+  padding: 15px 60px;
+  border: 1px solid rgb(157,157,157);
   font-weight: bold;
 }
 
 #play-stop-btn {
   background-color: black;
   border-radius: 15px;
-  border: 1px solid gray;
+  border: 1px solid rgb(157,157,157);
   display: inline-block;
   margin-top: 20px;
   height: 50px;
   width: 170px;
+  margin-bottom: 51px; /* For desktop screens */
+  /* margin-bottom: 45px; For mobile screens */
 }
 
 #play-stop-btn:hover {
   background-color: rgba(255,255,255, 0.15)
 }
 
-#play-pause-text {
-  font-size: 1rem;
+#timer-description {
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: 40px 0 30px 0;
 }
 
-#timer-description {
-  text-align: center;
-  background-color: rgba(255,255,255, 0.12);
-  border-radius: 30px;
-  margin-top: 7vh;
-  margin-left: 10%;
-  margin-right: 10%;
-  padding: 10px 3%;
+#timer-description > h2 {
+  line-height: 4rem;
+  padding-top: 1rem;
 }
 
 #timer-description > p {
-  line-height: 1.5rem;
-  font-size: 1rem;
+  line-height: 1.8rem;
 }
 
 #timer-description > ol {
@@ -120,43 +125,12 @@ header {
 }
 
 nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 3px 3px;
-  width: 100%;
-  height: 7vh;
-  background-color: black;
-  border-bottom: 1px solid gray;
-}
-
-nav > ul {
-  list-style: none;
-  padding: 0;
-  display: inline;
-  float: right;
-  margin: 5px 0;
-  overflow: hidden;
-}
-
-nav > ul > li {
-  display: inline-block;
-  margin: 0 5px;
-}
-
-nav > ul > li > button {
-  height: 40px;
-  font-size: 1.1rem;
-  border-radius: 6px;
-  border: 1px solid gray;
-  background-color: black;
-  padding: 0px 10px;
-  color: white;
+  border-bottom: 1px solid rgb(157,157,157);
 }
 
 footer {
-  margin-top: 30px;
+  border-top: 1px solid rgb(157,157,157);
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 0.7rem;
+  padding: 25px 0 15px 0;
+  font-size: 0.8rem;
 }

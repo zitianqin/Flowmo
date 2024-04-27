@@ -100,4 +100,31 @@ function startStopToggle() {
   }
 }
 
+let timeoutId;
+
+window.onload = function() {
+  const navbar = document.querySelector('.navbar');
+
+  // Hide the navbar after 10 seconds
+  timeoutId = setTimeout(function() {
+    navbar.classList.remove('navbar-show');
+    navbar.classList.add('navbar-hidden');
+  }, 20000);
+
+  // When the mouse enters the navbar, clear the timeout and show the navbar
+  navbar.addEventListener('mouseenter', function() {
+    clearTimeout(timeoutId);
+    navbar.classList.remove('navbar-hidden');
+    navbar.classList.add('navbar-show');
+  });
+
+  // When the mouse leaves the navbar, set the timeout and hide the navbar after 10 seconds
+  navbar.addEventListener('mouseleave', function() {
+    timeoutId = setTimeout(function() {
+      navbar.classList.remove('navbar-show');
+      navbar.classList.add('navbar-hidden');
+    }, 20000);
+  });
+};
+
 playStopBtn.onclick = startStopToggle;
