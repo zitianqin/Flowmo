@@ -29,13 +29,7 @@ body {
 .full-display-center {
   display: flex;
   justify-content: center;
-  height: calc(100vh - 56px);
-}
-
-@media (max-width: 600px) {
-  .full-display-center {
-    height: calc(100vh - 50px);
-  }
+  height: calc(100vh - 50px);
 }
 
 .navbar-brand {
@@ -141,7 +135,7 @@ body {
   font-size: 1.5rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   #timer-container {
     font-size: 1.1rem;
   }
@@ -153,7 +147,7 @@ body {
   width: 170px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   #timer-container button {
     border-radius: 11px;
     height: 38px;
@@ -172,7 +166,7 @@ body {
   margin: 20px 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   #timer {
     font-size: 6rem;
     border-radius: 45px;
