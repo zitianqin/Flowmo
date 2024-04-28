@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <title>Flowmo</title>
+    <meta charset="UTF-8">
+    <meta name = "keywords" content = "Flowmo, Flowtime, Flowmodoro, Timer, Study">
+    <meta name = "description" content = "Online flowtime timer.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css">
+  </head>
+
+  <body>
+    <header class="bg-transparent">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Flowmo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="full-display-center bg-black">
+      <div id="timer-container">
+        <aside id="status-span">Time to focus!</aside>
+        <div id="timer">00:00</div>
+        <div class="timer-buttons-container">
+          <button class="transparent-btn" id="task-list-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">Task List</button>
+          <button class="transparent-btn" id="play-stop-btn" onclick=startStopToggle()><span id="play-pause-text">Start</span></button>
+        </div>
+        <aside id="selected-task">No task selected</aside>
+      </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel" data-bs-scroll="true" data-bs-backdrop="false">
+      <div class="offcanvas-header">
+        <h5 id="sidebarLabel">Tasks</h5>
+        <button type="button" class="text-reset btn round-btn ms-auto bi bi-x-lg" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <form id="new-task-form" class="d-flex align-items-center">
+          <input type="text" id="new-task-input" placeholder="New task">
+          <button type="submit" class="round-btn bi bi-plus-lg ms-auto"></button>
+        </form>
+        <ul id="task-list" class="task-list-class">
+        </ul>
+        <h5 id="completed-tasks-heading">Completed Tasks</h5>
+        <ul id="completed-task-list" class="task-list-class">
+        </ul>
+        <button id="clear-completed-tasks-btn" type="button"> Clear Completed Tasks</button>
+      </div>
+    </div>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

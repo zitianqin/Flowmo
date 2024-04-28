@@ -9,6 +9,7 @@ const playStopBtn = document.getElementById('play-stop-btn');
 const playPauseText = document.getElementById('play-pause-text');
 const statusSpan = document.getElementById('status-span');
 const taskInput = document.getElementById('new-task-input');
+const timer = document.getElementById("timer");
 
 let startTime = 0;
 let elapsedTime = 0;
@@ -27,6 +28,21 @@ function timeToString(time) {
   const formattedMM = mm.toString().padStart(2, "0");
   const formattedSS = ss.toString().padStart(2, "0");
 
+  if (hh > 0) {
+    // Change the font size of the timer based on the number of digits
+    if (window.matchMedia("(max-width: 700px)").matches && window.matchMedia("(min-width: 600px)").matches) {
+      timer.style.fontSize = "6rem";
+    } else if (window.matchMedia("(max-width: 600px)").matches && window.matchMedia("(min-width: 400px)").matches) {
+      timer.style.fontSize = "4.5rem";
+    } else if (window.matchMedia("(max-width: 400px)").matches) {
+      timer.style.fontSize = "3rem";
+    } else if (window.matchMedia("(max-width: 810px)").matches) {
+      timer.style.fontSize = "7rem";
+    } else {
+      timer.style.fontSize = "8rem";
+    }
+  }
+
   // Construct the formatted time string based on the duration
   return hh > 0 ? `${formattedHH}:${formattedMM}:${formattedSS}` : `${formattedMM}:${formattedSS}`;
 }
@@ -35,7 +51,7 @@ function start() {
     startTime = Date.now();
     myInterval = setInterval(function printTime() {
     elapsedTime = Date.now() - startTime;
-    document.getElementById("timer").innerHTML = timeToString(elapsedTime);
+    timer.innerHTML = timeToString(elapsedTime);
     focusTime = elapsedTime / 5;
 	}, 1000);
 	
@@ -45,7 +61,7 @@ function start() {
 
 function stop() {
   clearInterval(myInterval);
-  document.getElementById("timer").innerHTML = "00:00";
+  timer.innerHTML = "00:00";
   elapsedTime = 0;
 
   playPauseText.textContent = 'Start Break';
@@ -61,7 +77,7 @@ function startRest() {
     if (elapsedTime <= 0) {
       stopRest();
     }
-    document.getElementById("timer").innerHTML = timeToString(elapsedTime);
+    timer.innerHTML = timeToString(elapsedTime);
   }, 1000);
 
   playPauseText.textContent = 'End Break';
@@ -69,7 +85,7 @@ function startRest() {
 
 function stopRest() {
   clearInterval(myInterval);
-  document.getElementById("timer").innerHTML = "00:00";
+  timer.innerHTML = "00:00";
   elapsedTime = 0;
 
   playPauseText.textContent = 'Start';
@@ -85,7 +101,7 @@ function startStopToggle() {
       break;
     case Command.STOP:
       stop();
-      document.getElementById("timer").innerHTML = timeToString(focusTime);
+      timer.innerHTML = timeToString(focusTime);
       lastCmd = Command.START_REST;
       break;
     case Command.START_REST:
@@ -279,7 +295,6 @@ function createTaskElement(id, text, completed) {
   return taskElement;
 }
 
-// Modify the task creation code to use the createTaskElement function and save the tasks
 document.getElementById('new-task-form').addEventListener('submit', function(event) {
   event.preventDefault();
   const taskInput = document.getElementById('new-task-input');
