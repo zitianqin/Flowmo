@@ -279,7 +279,6 @@ function createTaskElement(id, text, completed) {
   return taskElement;
 }
 
-// Modify the task creation code to use the createTaskElement function and save the tasks
 document.getElementById('new-task-form').addEventListener('submit', function(event) {
   event.preventDefault();
   const taskInput = document.getElementById('new-task-input');
