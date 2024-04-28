@@ -124,13 +124,19 @@ body {
 
 .task-list-class li p {
   margin-bottom: 0;
-  overflow-wrap: break-word;
-  width: 50%;
+  overflow-wrap: anywhere;
+  flex: 1;
 }
 
 #timer-container {
   text-align: center;
   font-size: 1.5rem;
+}
+
+#timer-container > aside {
+  /* width: 50%; */
+  /* flex: 1; */
+  overflow-wrap: anywhere;
 }
 
 #status-span {

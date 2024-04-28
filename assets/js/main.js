@@ -244,6 +244,7 @@ function createTaskElement(id, text, completed) {
     // If the task is already selected, deselect it
     if (taskElement.classList.contains('selected')) {
       taskElement.classList.remove('selected');
+      document.getElementById('selected-task').textContent = 'No task selected';
     } else {
       // Otherwise, deselect all tasks and select the clicked one
       const tasks = document.querySelectorAll('#task-list li');
@@ -252,6 +253,7 @@ function createTaskElement(id, text, completed) {
       });
 
       taskElement.classList.add('selected');
+      document.getElementById('selected-task').textContent = taskElement.querySelector('p').textContent;
     }
 
     saveTasks();
