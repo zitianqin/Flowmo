@@ -29,8 +29,13 @@ body {
 .full-display-center {
   display: flex;
   justify-content: center;
-  height: calc(100vh - 56px); /* For desktop screens */
-  /* height: calc(100vh - 50px); For mobile screens */
+  height: calc(100vh - 56px);
+}
+
+@media (max-width: 600px) {
+  .full-display-center {
+    height: calc(100vh - 50px);
+  }
 }
 
 .navbar-brand {
@@ -136,6 +141,26 @@ body {
   font-size: 1.5rem;
 }
 
+@media (max-width: 600px) {
+  #timer-container {
+    font-size: 1.1rem;
+  }
+}
+
+#timer-container button {
+  border-radius: 15px;
+  height: 50px;
+  width: 170px;
+}
+
+@media (max-width: 600px) {
+  #timer-container button {
+    border-radius: 11px;
+    height: 38px;
+    width: 128px;
+  }
+}
+
 #timer {
   font-size: 8rem;
   border-radius: 60px;
@@ -147,16 +172,13 @@ body {
   margin: 20px 0;
 }
 
-#play-stop-btn {
-  border-radius: 15px;
-  height: 50px;
-  width: 170px;
-}
-
-#task-list-btn {
-  border-radius: 15px;
-  height: 50px;
-  width: 170px;
+@media (max-width: 600px) {
+  #timer {
+    font-size: 6rem;
+    border-radius: 45px;
+    padding: 11px 45px;
+    margin: 15px 0;
+  }
 }
 
 #selected-task {
