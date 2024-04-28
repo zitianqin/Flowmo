@@ -108,6 +108,21 @@ function uid() {
   return uniqueId.toString();
 }
 
+// Save tasks to localStorage whenever a task is created or moved
+function saveTasks() {
+  ['task-list', 'completed-task-list'].forEach(function(listId) {
+    const tasks = Array.from(document.getElementById(listId).children).map(function(taskElement) {
+      return {
+        id: taskElement.id,
+        text: taskElement.querySelector('p').textContent,
+        completed: taskElement.classList.contains('completed'),
+        selected: taskElement.classList.contains('selected')
+      };
+    });
+    localStorage.setItem(listId, JSON.stringify(tasks));
+  });
+}
+
 // Add event listeners for drag and drop to each task element
 function addDragAndDrop(taskElement) {
   taskElement.draggable = true;
@@ -148,6 +163,8 @@ function addDragAndDrop(taskElement) {
       // If the task is dropped into the active tasks list, mark it as incomplete
       draggedElement.classList.remove('completed');
     }
+
+    saveTasks();
   });
 }
 
@@ -176,23 +193,15 @@ window.onload = function() {
   });
 };
 
-document.getElementById('new-task-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  const taskInput = document.getElementById('new-task-input');
-  const taskText = taskInput.value;
-
-  if (!taskText.trim()) {
-    alert('Task cannot be empty');
-    return;
-  }
-
+// Create a new task element
+function createTaskElement(id, text, completed) {
   const taskElement = document.createElement('li');
-  taskElement.id = uid(); // Add a unique id to each task element
+  taskElement.id = id;
 
   // Add a "Complete" button to each task
   const completeButton = document.createElement('button');
-  completeButton.classList.add('btn'); // Add Bootstrap classes here
-  completeButton.innerHTML = '<i class="bi bi-check-lg round-btn"></i>'; // Use Bootstrap icon
+  completeButton.classList.add('btn');
+  completeButton.innerHTML = '<i class="bi bi-check-lg round-btn"></i>';
 
   completeButton.addEventListener('click', function() {
     // Toggle the 'completed' class on the clicked task
@@ -201,7 +210,6 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
     // If the task is selected and completed, deselect it
     if (taskElement.classList.contains('completed') && taskElement.classList.contains('selected')) {
       taskElement.classList.remove('selected');
-      localStorage.removeItem('selectedTask');
     }
 
     if (taskElement.classList.contains('completed')) {
@@ -209,6 +217,8 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
     } else {
       document.getElementById('task-list').appendChild(taskElement);
     }
+
+    saveTasks();
   });
 
   taskElement.appendChild(completeButton);
@@ -218,7 +228,7 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
   taskTextDiv.style.display = 'inline-block';
 
   // Append the task text as a separate text node
-  const taskTextNode = document.createTextNode(taskText);
+  const taskTextNode = document.createTextNode(text);
   taskTextDiv.appendChild(taskTextNode);
 
   // Append the div to the task element
@@ -234,7 +244,6 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
     // If the task is already selected, deselect it
     if (taskElement.classList.contains('selected')) {
       taskElement.classList.remove('selected');
-      localStorage.removeItem('selectedTask');
     } else {
       // Otherwise, deselect all tasks and select the clicked one
       const tasks = document.querySelectorAll('#task-list li');
@@ -243,23 +252,62 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
       });
 
       taskElement.classList.add('selected');
-      localStorage.setItem('selectedTask', uid());
     }
+
+    saveTasks();
   });
 
   const deleteButton = document.createElement('button');
-  deleteButton.classList.add('btn'); // Add Bootstrap classes here
-  deleteButton.innerHTML = '<i class="bi bi-trash round-btn"></i>'; // Use Bootstrap icon
+  deleteButton.classList.add('btn');
+  deleteButton.innerHTML = '<i class="bi bi-trash round-btn"></i>';
   deleteButton.addEventListener('click', function() {
     taskElement.remove();
+
+    saveTasks();
   });
   taskElement.appendChild(deleteButton);
 
   addDragAndDrop(taskElement);
 
+  if (completed) {
+    taskElement.classList.add('completed');
+  }
+
+  return taskElement;
+}
+
+// Modify the task creation code to use the createTaskElement function and save the tasks
+document.getElementById('new-task-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const taskInput = document.getElementById('new-task-input');
+  const taskText = taskInput.value;
+
+  if (!taskText.trim()) {
+    alert('Task cannot be empty');
+    return;
+  }
+
+  const taskElement = createTaskElement(uid(), taskText, false);
   document.getElementById('task-list').appendChild(taskElement);
+
+  saveTasks();
+
   // Clear the input field
   taskInput.value = '';
+});
+
+// Load tasks from localStorage when the page is loaded
+window.addEventListener('DOMContentLoaded', function() {
+  ['task-list', 'completed-task-list'].forEach(function(listId) {
+    const tasks = JSON.parse(localStorage.getItem(listId) || '[]');
+    tasks.forEach(function(task) {
+      const taskElement = createTaskElement(task.id, task.text, task.completed);
+      if (task.selected) {
+        taskElement.classList.add('selected');
+      }
+      document.getElementById(listId).appendChild(taskElement);
+    });
+  });
 });
 
 playStopBtn.onclick = startStopToggle;
