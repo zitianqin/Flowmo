@@ -108,6 +108,49 @@ function uid() {
   return uniqueId.toString();
 }
 
+// Add event listeners for drag and drop to each task element
+function addDragAndDrop(taskElement) {
+  taskElement.draggable = true;
+
+  taskElement.addEventListener('dragstart', function(e) {
+    e.dataTransfer.setData('text/plain', this.id);
+  });
+
+  taskElement.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    this.style.backgroundColor = 'gray';
+  });
+
+  taskElement.addEventListener('dragleave', function(e) {
+    this.style.backgroundColor = '';
+  });
+
+  taskElement.addEventListener('drop', function(e) {
+    e.preventDefault();
+    this.style.backgroundColor = '';
+    const draggedId = e.dataTransfer.getData('text/plain');
+    const draggedElement = document.getElementById(draggedId);
+  
+    // Check if the dragged element was originally above or below the drop target
+    if (draggedElement.offsetTop < this.offsetTop) {
+      // If the dragged element was originally above, insert it below the drop target
+      this.parentNode.insertBefore(draggedElement, this.nextSibling);
+    } else {
+      // If the dragged element was originally below, insert it above the drop target
+      this.parentNode.insertBefore(draggedElement, this);
+    }
+  
+    // Check which list the task is dropped into
+    if (this.parentNode.id === 'completed-task-list') {
+      // If the task is dropped into the completed tasks list, mark it as complete
+      draggedElement.classList.add('completed');
+    } else if (this.parentNode.id === 'task-list') {
+      // If the task is dropped into the active tasks list, mark it as incomplete
+      draggedElement.classList.remove('completed');
+    }
+  });
+}
+
 window.onload = function() {
   const navbar = document.querySelector('.navbar');
 
@@ -144,6 +187,7 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
   }
 
   const taskElement = document.createElement('li');
+  taskElement.id = uid(); // Add a unique id to each task element
 
   // Add a "Complete" button to each task
   const completeButton = document.createElement('button');
@@ -158,6 +202,12 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
     if (taskElement.classList.contains('completed') && taskElement.classList.contains('selected')) {
       taskElement.classList.remove('selected');
       localStorage.removeItem('selectedTask');
+    }
+
+    if (taskElement.classList.contains('completed')) {
+      document.getElementById('completed-task-list').appendChild(taskElement);
+    } else {
+      document.getElementById('task-list').appendChild(taskElement);
     }
   });
 
@@ -174,11 +224,8 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
   // Append the div to the task element
   taskElement.appendChild(taskTextDiv);
 
-  // Add a "Select" button to each task
-  const selectButton = document.createElement('button');
-  selectButton.classList.add('btn'); // Add Bootstrap classes here
-  selectButton.innerHTML = '<i class="bi bi-hand-index-thumb round-btn"></i>'; // Use Bootstrap icon
-  selectButton.addEventListener('click', function() {
+  // Add a "Select" event to the entire task element
+  taskElement.addEventListener('click', function() {
     // If the task is already completed, ignore it
     if (taskElement.classList.contains('completed')) {
       return;
@@ -199,7 +246,6 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
       localStorage.setItem('selectedTask', uid());
     }
   });
-  taskElement.appendChild(selectButton);
 
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('btn'); // Add Bootstrap classes here
@@ -209,9 +255,11 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
   });
   taskElement.appendChild(deleteButton);
 
+  addDragAndDrop(taskElement);
+
   document.getElementById('task-list').appendChild(taskElement);
-    // Clear the input field
-    taskInput.value = '';
+  // Clear the input field
+  taskInput.value = '';
 });
 
 playStopBtn.onclick = startStopToggle;
