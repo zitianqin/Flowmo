@@ -36,10 +36,11 @@
           <button class="transparent-btn" id="task-list-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">Task List</button>
           <button class="transparent-btn" id="play-stop-btn" onclick=startStopToggle()><span id="play-pause-text">Start</span></button>
         </div>
+        <aside id="selected-task">No task selected</aside>
       </div>
     </div>
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel" data-bs-scroll="true" data-bs-backdrop="false">
       <div class="offcanvas-header">
         <h5 id="sidebarLabel">Tasks</h5>
         <button type="button" class="text-reset btn round-btn ms-auto bi bi-x-lg" data-bs-dismiss="offcanvas"></button>
@@ -47,10 +48,14 @@
       <div class="offcanvas-body">
         <form id="new-task-form" class="d-flex align-items-center">
           <input type="text" id="new-task-input" placeholder="New task">
-          <button type="submit" class="round-btn bi bi-x-lg ms-auto"></button>
+          <button type="submit" class="round-btn bi bi-plus-lg ms-auto"></button>
         </form>
-        <ul id="task-list">
+        <ul id="task-list" class="task-list-class">
         </ul>
+        <h5 id="completed-tasks-heading">Completed Tasks</h5>
+        <ul id="completed-task-list" class="task-list-class">
+        </ul>
+        <button id="clear-completed-tasks-btn" type="button"> Clear Completed Tasks</button>
       </div>
     </div>
     
