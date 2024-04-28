@@ -259,7 +259,7 @@ function createTaskElement(id, text, completed) {
 
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('btn');
-  deleteButton.innerHTML = '<i class="bi bi-trash round-btn"></i>';
+  deleteButton.innerHTML = '<i class="bi bi-x-lg round-btn"></i>';
   deleteButton.addEventListener('click', function() {
     taskElement.remove();
 
