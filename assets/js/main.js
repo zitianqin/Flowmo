@@ -8,6 +8,7 @@ const Command = Object.freeze({
 const playStopBtn = document.getElementById('play-stop-btn');
 const playPauseText = document.getElementById('play-pause-text');
 const statusSpan = document.getElementById('status-span');
+const taskInput = document.getElementById('new-task-input');
 
 let startTime = 0;
 let elapsedTime = 0;
@@ -289,6 +290,11 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
     return;
   }
 
+  if (taskText.length > 100) {
+    alert('Task name cannot be over 100 characters!');
+    return;
+  }
+
   const taskElement = createTaskElement(uid(), taskText, false);
   document.getElementById('task-list').appendChild(taskElement);
 
@@ -309,16 +315,27 @@ document.getElementById('clear-completed-tasks-btn').addEventListener('click', f
 
 // Load tasks from localStorage when the page is loaded
 window.addEventListener('DOMContentLoaded', function() {
+  let selectedTaskElement = null;
+
   ['task-list', 'completed-task-list'].forEach(function(listId) {
     const tasks = JSON.parse(localStorage.getItem(listId) || '[]');
     tasks.forEach(function(task) {
       const taskElement = createTaskElement(task.id, task.text, task.completed);
       if (task.selected) {
         taskElement.classList.add('selected');
+        selectedTaskElement = taskElement;
       }
       document.getElementById(listId).appendChild(taskElement);
     });
   });
+
+  // Update selected task text in timer container
+  if (selectedTaskElement) {
+    document.getElementById('selected-task').textContent = selectedTaskElement.querySelector('p').textContent;
+  } else {
+    document.getElementById('selected-task').textContent = 'No task selected';
+  }
 });
 
+taskInput.setAttribute('maxlength', '100');
 playStopBtn.onclick = startStopToggle;
