@@ -220,13 +220,16 @@ function createTaskElement(id, text, completed) {
   completeButton.classList.add('btn');
   completeButton.innerHTML = '<i class="bi bi-check-lg round-btn"></i>';
 
-  completeButton.addEventListener('click', function() {
+  completeButton.addEventListener('click', function(event) {
+    event.stopPropagation();
+    
     // Toggle the 'completed' class on the clicked task
     taskElement.classList.toggle('completed');
 
     // If the task is selected and completed, deselect it
     if (taskElement.classList.contains('completed') && taskElement.classList.contains('selected')) {
       taskElement.classList.remove('selected');
+      document.getElementById('selected-task').textContent = 'No task selected';
     }
 
     if (taskElement.classList.contains('completed')) {
@@ -252,7 +255,9 @@ function createTaskElement(id, text, completed) {
   taskElement.appendChild(taskTextDiv);
 
   // Add a "Select" event to the entire task element
-  taskElement.addEventListener('click', function() {
+  taskElement.addEventListener('click', function(event) {
+    event.stopPropagation();
+
     // If the task is already completed, ignore it
     if (taskElement.classList.contains('completed')) {
       return;
@@ -279,9 +284,15 @@ function createTaskElement(id, text, completed) {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('btn');
   deleteButton.innerHTML = '<i class="bi bi-x-lg round-btn"></i>';
-  deleteButton.addEventListener('click', function() {
-    taskElement.remove();
+  deleteButton.addEventListener('click', function(event) {
+    event.stopPropagation();
+    
+    if (taskElement.classList.contains('selected')) {
+      taskElement.classList.remove('selected');
+      document.getElementById('selected-task').textContent = 'No task selected';
+    }
 
+    taskElement.remove();
     saveTasks();
   });
   taskElement.appendChild(deleteButton);
