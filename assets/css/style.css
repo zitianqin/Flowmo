@@ -175,6 +175,13 @@ body {
   border: 0;
 }
 
+#clear-completed-tasks-btn {
+  border-radius: 15px;
+  padding: 10px;
+  border: 0;
+  background-color: rgba(255,255,255, 0.08);
+}
+
 #timer-description {
   margin-left: 15%;
   margin-right: 15%;

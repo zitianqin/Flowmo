@@ -296,6 +296,15 @@ document.getElementById('new-task-form').addEventListener('submit', function(eve
   taskInput.value = '';
 });
 
+document.getElementById('clear-completed-tasks-btn').addEventListener('click', function() {
+  const completedTasks = document.querySelectorAll('#completed-task-list li');
+  completedTasks.forEach(function(task) {
+    task.remove();
+  });
+
+  saveTasks();
+});
+
 // Load tasks from localStorage when the page is loaded
 window.addEventListener('DOMContentLoaded', function() {
   ['task-list', 'completed-task-list'].forEach(function(listId) {
