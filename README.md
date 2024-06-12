@@ -23,5 +23,8 @@ Not many flowtime timers exist, and those that do typically require users to cre
 - Option to play non-sleep deep rest audio files to play when resting
 - Light mode
 
+## Sound Attribution
+The sound "Phone Ringing #5" used in this project is by AUDACITIER, available at [freesound.org](https://freesound.org/s/629201/). It is licensed under [Attribution 4.0](https://creativecommons.org/licenses/by/4.0/).
+
 ## Rights
 All rights reserved. No part of this software may be reproduced, distributed, or transmitted in any form or by any means, without the prior written permission of the author.

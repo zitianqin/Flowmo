@@ -10,6 +10,7 @@ const playPauseText = document.getElementById('play-pause-text');
 const statusSpan = document.getElementById('status-span');
 const taskInput = document.getElementById('new-task-input');
 const timer = document.getElementById("timer");
+const breakStopAudio = new Audio('assets/sounds/break-stop.mp3');
 
 let startTime = 0;
 let elapsedTime = 0;
@@ -75,6 +76,7 @@ function startRest() {
   myInterval = setInterval(function printTime() {
     elapsedTime = startTime - Date.now();
     if (elapsedTime <= 0) {
+      breakStopAudio.play();
       stopRest();
     }
     timer.innerHTML = timeToString(elapsedTime);
@@ -120,7 +122,7 @@ function startStopToggle() {
 
 function uid() {
   const timestamp = Date.now();
-  const uniqueId = timestamp;
+  const uniqueId = timestamp + Math.floor(Math.random() * 1000);
 
   return uniqueId.toString();
 }
