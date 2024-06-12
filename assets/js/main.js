@@ -120,7 +120,7 @@ function startStopToggle() {
 
 function uid() {
   const timestamp = Date.now();
-  const uniqueId = timestamp;
+  const uniqueId = timestamp + Math.floor(Math.random() * 1000);
 
   return uniqueId.toString();
 }
